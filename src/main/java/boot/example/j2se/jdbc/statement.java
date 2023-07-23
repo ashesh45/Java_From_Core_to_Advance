@@ -1,4 +1,4 @@
-package boot.example.j2se.day5;
+package boot.example.j2se.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
