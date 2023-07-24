@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import boot.example.j2se.jdbc.dao.User;
+
 public class GetOne {
 
 	

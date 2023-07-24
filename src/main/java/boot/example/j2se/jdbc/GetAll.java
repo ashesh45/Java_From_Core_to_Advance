@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import boot.example.j2se.jdbc.dao.User;
+
 public class GetAll {
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
