@@ -7,7 +7,6 @@ public interface DAO<T,I> {
 	public void disconnect();
 	public int save(T t);
 	public int update(T t);
-	public List<T> getOne(int i);
 	public int delete(T t);
 	public List<T> getAll(T t);
 	User GetOne(Integer id);

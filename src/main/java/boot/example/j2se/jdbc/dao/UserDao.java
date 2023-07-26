@@ -28,12 +28,39 @@ public class UserDao extends AbstractDAO<User, Integer>{
 
 	@Override
 	public int update(User t) {
-		// TODO Auto-generated method stub
-		return 0;
+		connect();
+		int i=0;
+		String Query = "Update user SET name=?, Email=? where id=? ";
+		PreparedStatement pstm;
+		try {
+			pstm=con.prepareStatement(Query);
+			pstm.setString(1, t.getName());
+			pstm.setString(2, t.getEmail());
+			pstm.setInt(3, t.getId());
+			i= pstm.executeUpdate();
+			System.out.println(" database Updated");
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		disconnect();
+		return i;
 	}
 
+
+		
+	
+
+
 	@Override
-	public User getOne(Integer id) {
+	public List<User> getAll(User t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public User GetOne(Integer id) {
 		connect();
 		String query = "select * from user where id=?";
 		PreparedStatement pstm;
@@ -57,18 +84,11 @@ public class UserDao extends AbstractDAO<User, Integer>{
 		return null;
 	}
 
-		
-	
 	@Override
 	public int delete(User t) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
-
-	@Override
-	public List<User> getAll(User t) {
-		// TODO Auto-generated method stub
-		return null;
+	
 	}
 
-}

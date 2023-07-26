@@ -13,26 +13,28 @@ public class Update {
 	   
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/end_point_tech", "root", "root");
-		String query = "update * from user set tName=?, temail=? where id=?";
+		String query = "update user set Name=?, email=? where id=?";
 		Scanner sc = new Scanner(System.in);
 	
 	   System.out.println("Enter the new name: ");
-	    int name = sc.nextInt();
+	   String  name = sc.next();
 	    
 	    System.out.println("Enter the new email: ");
-	    int email = sc.nextInt();
+	    String email = sc.next();
+	    
+	    System.out.println("Enter the new id: ");
+	    String id = sc.next();
 	        
 	    
 		PreparedStatement pstm = con.prepareStatement(query);
 		
-		pstm.setString(4,name);
-		pstm.setString(5, email);
-		
-        pstm.setInt(1, name);
+		pstm.setString(1,name);
+		pstm.setString(2, email);
+		pstm.setString(3, id);
         
         pstm.executeUpdate();
         
-        System.out.println("done");
+        System.out.println("database Updated");
         pstm.close();
         con.close();
 	}
