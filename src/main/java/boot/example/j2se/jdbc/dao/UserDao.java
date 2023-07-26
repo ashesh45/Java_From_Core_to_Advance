@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao extends AbstractDAO<User, Integer>{
@@ -54,8 +55,27 @@ public class UserDao extends AbstractDAO<User, Integer>{
 
 	@Override
 	public List<User> getAll(User t) {
-		// TODO Auto-generated method stub
-		return null;
+		connect();
+		String query = "select * from user";
+		PreparedStatement pstm;
+		ArrayList<User> users = new ArrayList<>();
+		try {
+			pstm = con.prepareStatement(query);
+			ResultSet rs = pstm.executeQuery();
+			while(rs.next()){
+				User user = new User();
+				user.setId(rs.getInt("id"));
+				user.setName(rs.getString("name"));
+				user.setEmail(rs.getString("email"));
+				users.add(user);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		disconnect();
+		return users;
+	
 	}
 
 
@@ -85,10 +105,21 @@ public class UserDao extends AbstractDAO<User, Integer>{
 	}
 
 	@Override
-	public int delete(User t) {
-		
-		return 0;
+	public int delete(Integer id) {
+		connect();
+		String query = "delete from user where id=?";
+		PreparedStatement pstm;
+		int i=0;
+		try {
+			pstm = con.prepareStatement(query);
+			pstm.setInt(1, id);
+			i= pstm.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		disconnect();
+		return i;
 	}
-	
 	}
 
