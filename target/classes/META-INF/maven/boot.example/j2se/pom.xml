@@ -45,5 +45,10 @@
     <scope>provided</scope>
 </dependency>
 
+  	<dependency>
+  		<groupId>com.hibernate</groupId>
+  		<artifactId>ProjectWithMaven</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>
